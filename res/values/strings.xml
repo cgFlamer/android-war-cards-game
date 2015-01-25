@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Joc Razboi</string>
+    <string name="action_settings">Setari</string>
+    <string name="title_activity_new_game">Joc Nou</string>
+    <string name="title_activity_game">Joc Razboi</string>
+    <string name="no_user_name">Completati randul de mai sus cu un nume nou</string>
+    <string name="system_username">Sistem</string>
+    <string name="cards_status">Carti: %d</string>
+    <string name="game_start">Pachetul a fost impartit - jocul poate incepe!</string>
+    <string name="game_status">%s a castigat!</string>
+    <string name="war_status" formatted="false">Razboi! %s a castigat %d carti!</string>
+    <string name="exit">Iesire</string>
+    <string name="play">Joaca</string>
+    <string name="game_won_title">Jocul s-a incheiat!</string>
+    <string name="game_won">%s a castigat!</string>
+</resources>

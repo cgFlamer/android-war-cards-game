@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="360px"
+    android:layout_height="450px"
+    android:background="@drawable/card_image"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green_playing_table">#669900</color>
+    <color name="card_bg_color">#fff9ffd1</color>
+    <color name="color_hearts">#700000</color>
+    <color name="color_diamonds">#ff0f0f</color>
+    <color name="color_spades">#303030</color>
+    <color name="color_clubs">#093c7a</color>
+</resources>
