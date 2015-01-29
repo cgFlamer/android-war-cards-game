@@ -16,42 +16,42 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Bun venit!"
+        android:text="@string/welcome"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/link_text_material_light" />
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/mainTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="179dp"
-        android:layout_toLeftOf="@+id/textView"
-        android:layout_toStartOf="@+id/textView"
-        android:clickable="true"
-        android:onClick="onNewGameBtnClick"
-        android:text="Joc nou" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button"
-        android:layout_toRightOf="@+id/textView"
-        android:clickable="true"
-        android:onClick="onExitBtnClick"
-        android:text="Iesire" />
+        android:layout_above="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:text="@string/app_name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/color_clubs"
+        android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView"
-        android:layout_alignEnd="@+id/button2"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignRight="@+id/button2"
-        android:layout_alignStart="@+id/button"
-        android:layout_marginBottom="64dp"
+        android:layout_above="@+id/mainTitleTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="17dp"
         android:src="@drawable/logo" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mainTitleTextView"
+        android:layout_alignRight="@+id/mainTitleTextView"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="94dp"
+        android:layout_toStartOf="@+id/textView"
+        android:clickable="true"
+        android:onClick="onNewGameBtnClick"
+        android:text="@string/title_activity_new_game" />
 
 </RelativeLayout>

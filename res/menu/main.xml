@@ -3,10 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.gcioropina.jocrazboi.MainActivity" >
 
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never"/>
+    <item 
+        android:id="@+id/main_menu_profiles" 
+        android:menuCategory="container" 
+        android:enabled="true" 
+        android:orderInCategory="1" 
+        android:visible="true"
+        android:title="@string/title_activity_profiles"
+        android:onClick="onProfilesMenuItemClick">
+    </item>
+    <item 
+        android:id="@+id/main_menu_exit" 
+        android:title="@string/exit" 
+        android:enabled="true" 
+        android:orderInCategory="5" 
+        android:visible="true"
+        android:onClick="onExitBtnClick">
+    </item>
 
 </menu>

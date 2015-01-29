@@ -5,30 +5,24 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-
+/**
+ * Game Activity
+ * @author gcioropina
+ * @created 1/14/15
+ */
 public class GameActivity extends ActionBarActivity {
 
     private EntityUser systemUser, localUser;
     private String localUsername;
-
-    private Integer systemCardViewId;
-    private Integer localCardViewId;
-
-    private Integer systemCardTextId;
-    private Integer localCardTextId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +32,7 @@ public class GameActivity extends ActionBarActivity {
         /** Write local user's username from current activity's extra data bag */
         localUsername = getIntent().getStringExtra("username");
 
-        systemCardViewId = View.generateViewId();
-        localCardViewId = View.generateViewId();
-        systemCardTextId = TextView.generateViewId();
-        localCardTextId = TextView.generateViewId();
-
         /** Call procedures */
-        createCardViews();
         createUsers();
         assignCards();
 
@@ -91,42 +79,6 @@ public class GameActivity extends ActionBarActivity {
          * Show dialog.
          */
         builder.show();
-    }
-
-    /**
-     * Create card views for system and user.
-     */
-    private void createCardViews() {
-        RelativeLayout parent = (RelativeLayout) findViewById(R.id.gameLayout);
-        LayoutInflater layInflater = getLayoutInflater();
-        TextView systemCardText = new TextView(this);
-        TextView userCardText = new TextView(this);
-
-        View systemCardView = layInflater.inflate(R.layout.card_layout, parent, false);
-        systemCardView.setId(systemCardViewId);
-        systemCardView.setTranslationX(310);
-        systemCardView.setTranslationY(190);
-        systemCardView.setVisibility(View.VISIBLE);
-        /** Add card text to view */
-        systemCardText.setId(systemCardTextId);
-        systemCardText.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-        systemCardText.setTranslationY(30);
-        ((LinearLayout) systemCardView).addView(systemCardText);
-        /** Add view to layout */
-        parent.addView(systemCardView);
-
-        View userCardView = layInflater.inflate(R.layout.card_layout, parent, false);
-        userCardView.setId(localCardViewId);
-        userCardView.setTranslationX(310);
-        userCardView.setTranslationY(800);
-        userCardView.setVisibility(View.VISIBLE);
-        /** Add card text to view */
-        userCardText.setId(localCardTextId);
-        userCardText.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-        userCardText.setTranslationY(30);
-        ((LinearLayout) userCardView).addView(userCardText);
-        /** Add view to layout */
-        parent.addView(userCardView);
     }
 
     /**
@@ -191,9 +143,9 @@ public class GameActivity extends ActionBarActivity {
         /**
          * Check if any of the users has no cards left.
          */
-        if(systemUser.getCards().size() == 0) {
+        if(systemUser.canPlay() == false) {
             showEndOfGameNotification(localUser);
-        } else if(localUser.getCards().size() == 0) {
+        } else if(localUser.canPlay() == false) {
             showEndOfGameNotification(systemUser);
         }
     }
@@ -201,7 +153,7 @@ public class GameActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_game, menu);
+        getMenuInflater().inflate(R.menu.game, menu);
         return true;
     }
 
@@ -210,13 +162,6 @@ public class GameActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -235,7 +180,7 @@ public class GameActivity extends ActionBarActivity {
      * Compare cards functionality.
      */
     private void compareCards() {
-        EntityCard systemCard, userCard, copy;
+        EntityCard systemCard, userCard;
 
         systemCard = systemUser.getCards().get(systemUser.getCardIndex());
         userCard = localUser.getCards().get(localUser.getCardIndex());
@@ -375,7 +320,7 @@ public class GameActivity extends ActionBarActivity {
 
         /** Populate data for system user */
         card = systemUser.getCards().get(systemUser.getCardIndex());
-        cardText = (TextView) findViewById(systemCardTextId);
+        cardText = (TextView) findViewById(R.id.systemCardViewText);
         cardText.setText(card.getDisplayName());
         cardText.setTextColor(getCardTextColor(card));
 //        getSystemCardView().setBackgroundResource(0);
@@ -384,7 +329,7 @@ public class GameActivity extends ActionBarActivity {
 
         /** Populate data for local user */
         card = localUser.getCards().get(localUser.getCardIndex());
-        cardText = (TextView) findViewById(localCardTextId);
+        cardText = (TextView) findViewById(R.id.userCardViewText);
         cardText.setText(card.getDisplayName());
         cardText.setTextColor(getCardTextColor(card));
 //        getUserCardView().setBackgroundResource(0);
@@ -394,6 +339,11 @@ public class GameActivity extends ActionBarActivity {
 
     }
 
+    /**
+     * Get card text color.
+     * @param card
+     * @return
+     */
     private Integer getCardTextColor(EntityCard card) {
         Integer colorCode = 0;
         switch (card.getColor()) {
@@ -418,11 +368,22 @@ public class GameActivity extends ActionBarActivity {
     }
 
     /**
-     * Close activity when exit button is pressed.
+     * Exit game menu item click handler.
      * @param v
+     * @return
      */
-    public void onGameExitBtnClick(View v) {
+    public boolean onGameExitBtnClick(MenuItem v) {
         finish();
+        return true;
     }
 
+    /**
+     * New game menu item click handler.
+     * @param v
+     * @return
+     */
+    public boolean onNewGameBtnClick(MenuItem v) {
+    	GameActivity.this.finish();
+    	return true;
+    }
 }

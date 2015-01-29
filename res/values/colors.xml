@@ -6,4 +6,5 @@
     <color name="color_diamonds">#ff0f0f</color>
     <color name="color_spades">#303030</color>
     <color name="color_clubs">#093c7a</color>
+    <color name="spinner_profiles">#b5b5b5</color>
 </resources>

@@ -1,7 +1,9 @@
 package com.gcioropina.jocrazboi;
 
 /**
- * Created by gcioropina on 1/13/15.
+ * Card entity.
+ * @author gcioropina
+ * @created 1/13/15
  */
 public class EntityCard implements Cloneable {
 
@@ -15,23 +17,44 @@ public class EntityCard implements Cloneable {
 
     private Integer color;
 
+    /**
+     * Constructor method.
+     * @param rank
+     * @param color
+     */
     public EntityCard(Integer rank, Integer color) {
         setRank(rank);
         setColor(color);
     }
 
+    /**
+     * Get card's rank.
+     * @return
+     */
     public Integer getRank() {
         return rank;
     }
 
+    /**
+     * Set rank.
+     * @param rank
+     */
     public void setRank(Integer rank) {
         this.rank = rank;
     }
 
+    /**
+     * Get card color.
+     * @return
+     */
     public Integer getColor() {
         return color;
     }
 
+    /**
+     * Set color.
+     * @param color
+     */
     public void setColor(Integer color) {
         this.color = color;
     }
@@ -76,6 +99,10 @@ public class EntityCard implements Cloneable {
         }
     }
 
+    /**
+     * Clone card method.
+     * @override
+     */
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }

@@ -7,7 +7,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-
+/**
+ * Main activity.
+ * @author gcioropina
+ * @created 1/13/15
+ */
 public class MainActivity extends ActionBarActivity {
 
     @Override
@@ -20,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
+    	getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -29,13 +33,6 @@ public class MainActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -44,15 +41,14 @@ public class MainActivity extends ActionBarActivity {
      *
      * @param v
      */
-    public void onExitBtnClick(View v) {
-        if (v.getId() == R.id.button2) {
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(1);
-        }
+    public Boolean onExitBtnClick(MenuItem v) {
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+        return true;
     }
 
     /**
-     * Launch new game activity
+     * Start new game activity
      *
      * @param v
      */
@@ -61,5 +57,16 @@ public class MainActivity extends ActionBarActivity {
             Intent myIntent = new Intent(MainActivity.this, NewGameActivity.class);
             MainActivity.this.startActivity(myIntent);
         }
+    }
+    
+    /**
+     * Start profiles activity.
+     * @param v
+     * @return
+     */
+    public Boolean onProfilesMenuItemClick(MenuItem v) {
+    	Intent myIntent = new Intent(MainActivity.this, ProfilesActivity.class);
+        MainActivity.this.startActivity(myIntent);
+    	return true;
     }
 }
