@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
@@ -14,7 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
- * 
+ * Profile management activity.
  * @author gcioropina
  * @created 1/27/15
  */
@@ -42,7 +43,15 @@ public class ProfilesActivity extends Activity {
 			 * Create array adapter for profiles& set it for list view.
 			 */
 			final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-			        android.R.layout.simple_expandable_list_item_1, profiles);
+			        android.R.layout.simple_expandable_list_item_1, profiles) {
+			        	@Override
+			        	public View getView(int position, View convertView, ViewGroup parent) {
+			        	    View view = super.getView(position, convertView, parent);
+			        	    TextView text = (TextView) view.findViewById(android.R.id.text1);
+			        	    text.setTextColor(getResources().getColor(R.color.spinner_profiles));
+			        	    return view;
+			        	  }
+			        	};
 			listView.setAdapter(adapter);
 			listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

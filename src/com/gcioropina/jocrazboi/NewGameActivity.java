@@ -10,12 +10,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+/**
+ * New game activity.
+ * @author gcioropina
+ * @created 1/13/15
+ */
 public class NewGameActivity extends ActionBarActivity {
 
 	private Database db;
@@ -46,7 +52,15 @@ public class NewGameActivity extends ActionBarActivity {
 		spinner.setVisibility(Spinner.VISIBLE);
 		
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, profiles);
+				android.R.layout.simple_spinner_item, profiles) {
+		        	@Override
+		        	public View getView(int position, View convertView, ViewGroup parent) {
+		        	    View view = super.getView(position, convertView, parent);
+		        	    TextView text = (TextView) view.findViewById(android.R.id.text1);
+		        	    text.setTextColor(getResources().getColor(R.color.spinner_profiles));
+		        	    return view;
+		        	  }
+		        	};
 		dataAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(dataAdapter);

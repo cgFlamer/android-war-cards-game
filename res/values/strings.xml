@@ -16,11 +16,12 @@
     <string name="play">Joaca</string>
     <string name="game_won_title">Jocul s-a incheiat!</string>
     <string name="game_won">%s a castigat!</string>
-    <string name="title_activity_profiles">Profile</string>
+    <string name="title_activity_profiles">Management profile</string>
     <string name="hello_world">Hello world!</string>
     <string name="insert_name">Introduceti-va numele</string>
     <string name="start_game">Incepere joc</string>
-    <string name="saved_profiles">Selectati profilul</string>
+    <string name="saved_profiles">Selectati profilul:</string>
+    <string name="saved_profiles_delete">Selectati profilul pe care vreti sa il stergeti</string>
     <string name="no_saved_profiles">Nu exista profile salvate</string>
     <string name="id">ID</string>
     <string name="profile">Nume</string>

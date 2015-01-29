@@ -17,10 +17,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="@string/saved_profiles"
+        android:gravity="center"
+        android:text="@string/saved_profiles_delete"
         android:textColor="@color/green_playing_table"
-        android:textSize="24sp"
-        android:gravity="center" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/noCardsTextView"
